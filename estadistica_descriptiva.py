@@ -53,6 +53,22 @@ plt.title('Histograma de Intervalos')
 plt.show()
 '''Los resultados varían del libro'''
 
+# Diagrama de barras ejemplo 2.3 pag.54
+
+# Listas con caracteres y valores
+hijos= [ 0, 1, 2, 3, 4]
+frecuencia= [5, 6, 8, 4, 2]
+# Diccionario para crear DataFrame
+data={'numero_hijos': hijos, 'frecuencia_total': frecuencia}
+# DataFrame con pandas
+df=pd.DataFrame(data)
+# Diagrama de barras
+plt.bar(df['numero_hijos'], df['frecuencia_total'])
+plt.xlabel('Numero de Hijos')
+plt.ylabel('Frecuencia Total')
+plt.title('Diagrama de barras de Numero de Hijos')
+plt.show()
+
 # Histograma ejemplo 2.1 pag.55
 
 colesterol= [10.6, 12.5, 11.1, 9.2, 11.5, 9.9, 11.9, 11.6, 14.9, 12.5, 12.5, 12.3, 12.2, 10.8, 16.5, 15.0, 10.3, 12.4, 9.1, 7.8, 11.3, 12.3, 9.7, 12.0, 11.8, 12.7, 11.4, 9.3, 8.6, 8.5, 10.1, 12.4, 11.1, 10.2]
@@ -63,10 +79,23 @@ df = df.rename_axis('individuo')
 df['intervalos'] = pd.cut(df['colinesterasa'], bins=6)
 df_intervalos=df.groupby('intervalos').count()
 # Crea Histograma
-# Create a histogram
 df_intervalos.plot(kind='bar', legend=False)
 plt.xlabel('Intervalos')
 plt.ylabel('Frecuencia')
 plt.title('Histograma de Intervalos')
 plt.show()
 '''Los resultados varían del libro'''
+
+#Diagrama de hojas y ramas ejemplo 2.1 pag.56
+
+colesterol= [10.6, 12.5, 11.1, 9.2, 11.5, 9.9, 11.9, 11.6, 14.9, 12.5, 12.5, 12.3, 12.2, 10.8, 16.5, 15.0, 10.3, 12.4, 9.1, 7.8, 11.3, 12.3, 9.7, 12.0, 11.8, 12.7, 11.4, 9.3, 8.6, 8.5, 10.1, 12.4, 11.1, 10.2]
+n = len(colesterol)
+col_ordenado = np.sort(colesterol)
+y = np.arange(1, n + 1) / n
+
+plt.step(col_ordenado, y, where="post", linestyle="-")
+plt.xlabel("Valores Col Ordenados")
+plt.ylabel("Proporcion")
+plt.title("Diagrama de hojas y ramas")
+plt.show()
+
