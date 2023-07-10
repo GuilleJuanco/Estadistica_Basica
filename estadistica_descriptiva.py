@@ -99,3 +99,20 @@ plt.ylabel("Proporcion")
 plt.title("Diagrama de hojas y ramas")
 plt.show()
 
+#Diagrama de cajas del ejemplo 2.1 pag.69 (Enunciado en libro dice 2.2 pero es un typo)
+
+colesterol= [10.6, 12.5, 11.1, 9.2, 11.5, 9.9, 11.9, 11.6, 14.9, 12.5, 12.5, 12.3, 12.2, 10.8, 16.5, 15.0, 10.3, 12.4, 9.1, 7.8, 11.3, 12.3, 9.7, 12.0, 11.8, 12.7, 11.4, 9.3, 8.6, 8.5, 10.1, 12.4, 11.1, 10.2]
+df=pd.DataFrame(colesterol, columns=['colinesterasa'])
+df = df.rename_axis('individuo')
+print(df.describe().T) # Para obtener total, media, std, minimo, maximo y cuartiles
+mediana = np.median(colesterol) # Para obtener mediana
+varianza = np.var(colesterol) #Para obtener varianza
+print('mediana:', mediana, 'varianza:', varianza) # Printea
+# Crea Boxplot
+plt.boxplot(df['colinesterasa'], vert=False)
+plt.xlabel('Valor')
+plt.ylabel('colinesterasa')
+plt.title('Diagrama de cajas')
+plt.show()
+
+
