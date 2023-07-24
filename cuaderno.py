@@ -1,21 +1,31 @@
 # Importa librerías
 import pandas as pd
 import numpy as np
+import math
+import scipy.stats as st
 import matplotlib.pyplot as plt
 
-# Calcular regresión lineal ejemplo 2.9 pag.80
-horas = [21, 32, 15, 40, 27, 18, 26, 50, 33, 51, 36, 16, 19, 22, 16, 39, 56, 29, 45, 25]
-marca = [13.2, 12.6, 13, 12.2, 15, 14.8, 14.8, 12.2, 13.6, 12.6, 13.1, 14.9, 13.9, 13.2, 15.1, 14.1, 13, 13.5, 12.7, 14.2]
-#Calcula coeficientes regresión lineal
-coeficientes = np.polyfit(horas, marca, 1)
-m, b = coeficientes
-#Crea gráfico
-plt.scatter(horas, marca, label='Entradas de Datos')
-plt.xlabel('Horas')
-plt.ylabel('Marca')
-plt.title('Nube de puntos con linea de Regresión Lineal')
-#Añade linea de regresión lineal
-plt.plot(horas, m * np.array(horas) + b, color='red', label='Regresión Lineal')
-plt.legend()
-plt.grid(True)
-plt.show()
+#2.1
+
+#Crea DataFrame
+porcentajes={'Suiza': 0.30, 'España': 0.15, 'Italia': 0.10, 'Francia': 0.20, 'Austria': 0.10, 'Alemania': 0.10, 'Otro': 0.05}
+df=pd.DataFrame([porcentajes]).T
+df.reset_index(inplace=True)
+df.columns = ['pais', 'porcentaje']
+#Analizar descriptivamente los datos
+medidas=df.describe().T #media, desviación estandar, min, max, cuantiles.
+recorrido=df['porcentaje'].max() - df['porcentaje'].min()
+media=df['porcentaje'].mean()
+moda=df['porcentaje'].mode()[0]
+mediana=df['porcentaje'].median()
+varianza=df['porcentaje'].var()
+stddev=math.sqrt(varianza)
+#Variación de Pearson
+Vp = (stddev / media) * 100
+#Asimetría de Pearson
+Ap = (media - moda) / stddev
+#Asimetría de Fisher
+Af = (media - mediana) / stddev
+#Resultados
+print(medidas)
+print("Recorrido:", recorrido,'Media:', media, "Moda:", moda, 'Mediana:', mediana, 'Varianza:', varianza, 'Desviación estandar:', stddev, 'Vp:', Vp, 'Ap:', Ap, 'Af:', Af)
