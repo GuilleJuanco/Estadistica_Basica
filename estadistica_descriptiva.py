@@ -115,4 +115,6 @@ plt.ylabel('colinesterasa')
 plt.title('Diagrama de cajas')
 plt.show()
 
+#Nube de puntos del ejemplo 2.9 pag.77
 
+horas=[21, 32, 15, 40, 27, 18, 26, 50, 33, 51, 36, 16, 19, 22, 16, 39, 56, 29, 45, 25]
