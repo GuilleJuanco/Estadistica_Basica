@@ -134,14 +134,14 @@ horas = [21, 32, 15, 40, 27, 18, 26, 50, 33, 51, 36, 16, 19, 22, 16, 39, 56, 29,
 marca = [13.2, 12.6, 13, 12.2, 15, 14.8, 14.8, 12.2, 13.6, 12.6, 13.1, 14.9, 13.9, 13.2, 15.1, 14.1, 13, 13.5, 12.7, 14.2]
 #Calcula coeficientes regresión lineal
 coeficientes = np.polyfit(horas, marca, 1)
-b1, b0 = coeficientes
+m, b = coeficientes
 #Crea gráfico
 plt.scatter(horas, marca, label='Entradas de Datos')
 plt.xlabel('Horas')
 plt.ylabel('Marca')
 plt.title('Nube de puntos con linea de Regresión Lineal')
 #Añade linea de regresión lineal
-plt.plot(horas, b1 * np.array(horas) + b0, color='red', label='Regresión Lineal')
+plt.plot(horas, m * np.array(horas) + b, color='red', label='Regresión Lineal')
 plt.legend()
 plt.grid(True)
 plt.show()
