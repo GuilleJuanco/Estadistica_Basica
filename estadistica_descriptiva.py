@@ -205,9 +205,25 @@ Af = (media - mediana) / stddev
 print(medidas)
 print("Recorrido:", recorrido,'Media:', media, "Moda:", moda, 'Mediana:', mediana, 'Varianza:', varianza, 'Desviación estandar:', stddev, 'Vp:', Vp, 'Ap:', Ap, 'Af:', Af)
 
-
+#2.3
 
 #2.3
+
+#Crea DataFrame
+gang_size=[[3, 6], [6, 11], [11, 16], [16, 21], [21, 26], [26, 31], [31, 41], [41, 51], [51, 76], [76, 101], [101, 201], [201, 501], [501, 1000]]
+frecuencia_abs=[37, 198, 191, 149, 79, 46, 55, 51, 26, 25, 25, 11, 2]
+punto_medio=[(l[0] + l[1]) / 2 for l in gang_size]
+long_intervalo=[(l[1]-l[0]) for l in gang_size]
+frecuencia_std=[(f/li) for f, li in zip(frecuencia_abs, long_intervalo)]
+# Diccionario para crear DataFrame
+data={'tamaño': gang_size,'pm': punto_medio, 'long_int': long_intervalo, 'frecuencia_absoluta': frecuencia_abs, 'frecuencia_estandar': frecuencia_std}
+# DataFrame con pandas
+df=pd.DataFrame(data)
+#Análisis descriptivo
+recorrido=df['pm'].max()-df['pm'].min()
+media=(df['pm']*df['frecuencia_absoluta']).sum() / df['frecuencia_absoluta'].sum()
+moda=df.loc[df['frecuencia_estandar'].idxmax(), 'tamaño'][0] + (df.at[df['frecuencia_estandar'].idxmax() + 1, 'frecuencia_estandar']*(df.loc[df['frecuencia_estandar'].idxmax(), 'tamaño'][1]-df.loc[df['frecuencia_estandar'].idxmax(), 'tamaño'][0]))/(df.at[df['frecuencia_estandar'].idxmax() - 1, 'frecuencia_estandar']+df.at[df['frecuencia_estandar'].idxmax() + 1, 'frecuencia_estandar'])
+
 
 #2.4
 
