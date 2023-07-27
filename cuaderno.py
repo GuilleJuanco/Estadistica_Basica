@@ -24,4 +24,15 @@ b0 = (y_sum - b1 * x_sum) / n
 coeficientes = np.polyfit(circunferencia, peso, 1)
 m, b = coeficientes
 #Calcular Coeficiente de correlación lineal de Pearson
+media_x = np.mean(circunferencia)
+media_y = np.mean(peso)
+dif_x = np.array(circunferencia) - media_x
+dif_y = np.array(peso) - media_y
+#Numerador
+numerador = np.sum(dif_x * dif_y)
+#Denominador
+denominador_x = np.sqrt(np.sum(dif_x ** 2))
+denominador_y = np.sqrt(np.sum(dif_y ** 2))
+#Calcula r
+r = numerador / (denominador_x * denominador_y)
 
