@@ -31,3 +31,9 @@ pb=1/10
 pc=1/40
 AUB = pa + pb - (pa * pb)
 AUC = pa + pc - (pa * pc)
+
+#Ejercicio 3.3 pag.103
+pa=0.4
+pb=0.6
+pc=0.85
+p= pa * pb * pc
