@@ -37,3 +37,13 @@ pa=0.4
 pb=0.6
 pc=0.85
 p= pa * pb * pc
+
+#Ejercicio 3.4 pag.103
+pa = 4/40
+pb = 4/40
+pba = 3/39
+
+#a)
+p1 = pa * pb
+#b)
+p2 = pa * pba
