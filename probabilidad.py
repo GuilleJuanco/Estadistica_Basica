@@ -47,3 +47,8 @@ pba = 3/39
 p1 = pa * pb
 #b)
 p2 = pa * pba
+
+#Ejercicio 3.5 pag.104
+
+# NO RESUELTO, DE MOMENTO.
+
